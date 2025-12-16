@@ -1,20 +1,20 @@
 //项目的根组件：被引入index.js，在public/index.html中渲染
 
-const articleType = 1; //0,1,3
-function getArticleTem() {
-  if (articleType === 0) {
-    return <div>我是无图文章</div>;
-  } else if (articleType === 1) {
-    return <div>我是单图模式</div>;
-  } else {
-    return <div>我是三图模式</div>;
-  }
-}
+//REACT中获取DOM
+import {useRef} from 'react'
+//1.使用useRef创建ref对象，并与JSX绑定
+//2.在DOM可用时，通过inputRef.current拿到DOM对象
+//渲染完毕之后 dom生成之后才可用
+
 function App() {
+  const inputRef=useRef(null)
+  const showDom = ()=>{
+    console.log(inputRef.current)
+  }
   return (
     <div className="App">
-      {/*调用函数渲染不同的模板 */}
-      {getArticleTem()}
+      <input type="text" ref={inputRef}></input>
+      <button onClick={showDom}>获取DOM</button>
     </div>
   );
 }
