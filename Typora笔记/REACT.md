@@ -743,3 +743,76 @@ npm i @reduxjs/toolkit react-redux
 npm run start
 ```
 ![](assets/17702128675371.jpg)
+```js
+// store/modules/counterStore
+import {createSlice} from '@reduxjs/toolkit'
+const counterStore = createSlice({
+    name:'counter',
+    //初始化state
+    initialState:{
+        count :0
+    },
+    //修改状态的方法，同步方法支持直接修改
+  reducers:{
+    increment(state) {
+        state.count++
+    },
+    decrement (state) {
+        state.count--
+    }
+  }
+})
+//解构出来actionCreater函数
+const {increment,decrement}=counterStore.actions
+//获取reducer函数
+const reducer=counterStore.reducer
+//导出actionCreater函数和reducer函数
+export{increment,decrement} 
+export default reducer
+```
+```js
+//store/index.js. 这个文件相当于store的传输媒介，也是modules内部文件的调度中心
+import { configureStore } from '@reduxjs/toolkit';
+//导入子模块reducer
+import counterReducer from './modules/counterStore'
+const store=configureStore({
+    reducer:{
+        counter:counterReducer
+    }
+})
+export default store;
+```
+react-redux中间键负责把Redux和React连接起来，内置Provider组件，通过store参数把创建好的store实例注入应用中，链接正式成立
+```js
+//index.js
+import store from './store'
+import { Provider } from 'react-redux';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+     <App />
+    </Provider>
+  </React.StrictMode>
+);
+```
+在React中使用store中的数据，需要用到一个钩子函数useSelector，它的作用是把store中的数据映射到组件中
+```js
+//使用方法
+const {count} =useSelector(state=>state.counter)
+//这个counter对应的是store/indexjs中的reducer函数中的counter
+//store/index.js. 这个文件相当于store的传输媒介，也是modules内部文件的调度中心
+import { configureStore } from '@reduxjs/toolkit';
+//导入子模块reducer
+import counterReducer from './modules/counterStore'
+const store=configureStore({
+    reducer:{
+        counter:counterReducer
+        //这个counter
+    }
+})
+export default store;
+```
+react组件中修改store中的数据
+需要借助另一个hook函数useDispatch，它的作用是生成提交action对象的dispatch函数（在react中修改数据的方法就是提交action对象）
