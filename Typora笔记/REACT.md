@@ -816,3 +816,28 @@ export default store;
 ```
 react组件中修改store中的数据
 需要借助另一个hook函数useDispatch，它的作用是生成提交action对象的dispatch函数（在react中修改数据的方法就是提交action对象）
+```js
+import { useDispatch,useSelector } from "react-redux";
+//导入actionCreater
+import { increment,decrement }   from "./store/modules/counterStore";
+
+function App() {
+  const {count}=useSelector(state=>state.counter)
+  const dispatch=useDispatch()
+  return (
+    <div className="App">
+      <button onClick={()=>dispatch(decrement())}>-</button>
+      {count}
+      <button onClick={()=>dispatch(increment())}>+</button>
+    </div>
+  );
+}
+
+export default App;
+```
+提交action传参
+在reducers的同步修改中添加action对象参数，在调用actionCreater的时候传递参数，参数会被传递到action对象的payload对象上
+### 3.异步操作
+1.创建store的写法保持不变，配置好同步修改状态的方法
+2.单独封装一个函数，在函数内部return一个新函数，在新函数中封装异步请求获取数据，调用同步的actionCreater传入异步数据生成一个action对象，并使用dispatch提交
+3.组件中dispatch写法保持不变
