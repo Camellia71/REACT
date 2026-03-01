@@ -881,3 +881,5 @@ export default App;
 ## DAY-4
 
 ### 1.react-router简介
+前端路由就是一个path对应一个component，当我们在浏览器中访问一个path时，path对应的组件就会在页面中进行渲染
+ 
