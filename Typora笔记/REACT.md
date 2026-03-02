@@ -881,5 +881,104 @@ export default App;
 ## DAY-4
 
 ### 1.react-router简介
+
 前端路由就是一个path对应一个component，当我们在浏览器中访问一个path时，path对应的组件就会在页面中进行渲染
- 
+1.
+```
+src/
+├── pages/          # 存放页面级组件
+│   ├── Home.jsx
+│   └── About.jsx
+├── router/         # 路由模块
+│   └── index.jsx   # 路由配置文件
+└── App.jsx
+```
+2.创建页面组件
+```
+src/pages/Home.js
+src/
+├── pages/          # 存放页面级组件
+│   ├── Home.jsx
+│   └── About.jsx
+├── router/         # 路由模块
+│   └── index.jsx   # 路由配置文件
+└── App.jsx
+```
+3.配置路由模块
+在 router/index.jsx中，使用 createBrowserRouter创建路由实例，并导出该实例。
+```
+src/router/index.jsx
+import { createBrowserRouter } from 'react-router-dom';
+import Home from '../pages/Home';
+import About from '../pages/About';
+
+// 1. 定义路由配置数组
+const routes = [
+  {
+    path: '/',
+    element: <Home />,
+  },
+  {
+    path: '/about',
+    element: <About />,
+  },
+];
+
+// 2. 创建路由实例
+const router = createBrowserRouter(routes);
+
+// 3. 导出实例
+export default router;
+```
+4.在app中绑定路由
+在 App.jsx中，不再直接定义路由，而是导入并使用 RouterProvider组件绑定我们抽象好的路由模块。
+```
+src/App.jsx
+import { RouterProvider } from 'react-router-dom';
+import router from './router'; // 导入抽象的路由模块
+
+function App() {
+  return <RouterProvider router={router} />;
+}
+export default App;
+```
+### 2.路由导航
+路由系统中的多个路由之间需要进行路由跳转，并且在跳转的同时有可能需要传递参数进行通信
+1.声明式导航
+是指通过在模版中<Link/>组件描述出要跳转到哪里去，通过给组件的to属性指定要跳转到路由path，组件会被渲染为浏览器支持的a链接，传参直接通过字符串拼接的方式即可
+```
+<Link to="/article">文章</Link>
+```
+2.编程式导航
+ 通过‘useNavigate’钩子函数得到导航方法，然后通过调用方法以命令式的形式进行路由跳转，比如想在登录请求完毕之后跳转就可以选择这种方式，通过navegate方法传入地址path实现跳转
+ ```
+ import { Link, useNavigate } from "react-router-dom";
+const Login = () => {
+  const navigate = useNavigate();
+  return (
+    <div>
+      我是登录页
+      {/* 声明式写法 */}
+      <Link to="/article">跳转到文章页</Link>
+      {/* 命令式写法 */}
+      <button onClick={() => navigate("/article")}>跳转到文章页</button>
+    </div>
+  );
+};
+export default Login;
+```
+### 3.传参
+1.searchParams传参
+```
+import { useSearchParams } from "react-router-dom";
+const Article = () => {
+  const [params] = useSearchParams();
+  const id = params.get("id");
+  return <div>我是文章页，ID为：{id}</div>;
+};
+export default Article;
+```
+2.params传参
+```
+
+```
