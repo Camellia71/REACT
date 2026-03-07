@@ -11,6 +11,7 @@ const Login = () => {
       <button onClick={() => navigate("/article?id=1001&name=jack")}>
         searchParams传参
       </button>
+      <button onClick={() => navigate("/article/1001")}>params传参</button>
     </div>
   );
 };
