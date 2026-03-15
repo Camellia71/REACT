@@ -1445,3 +1445,22 @@ const router = createBrowserRouter([
 
 export default router
 ```
+## DAY-10
+### 1.useReducer
+```js
+//1.定义reducer函数，根据不同的action返回不同的状态
+//2.组件中调用useReducer(reducer,0)=[state,dispatch]
+//3.调用dispatch函数({type:'INC'})=>通知reducer产生一个新的状态，使用这个新状态更新UI
+import { useReducer } from 'react';
+
+function reducer(state, action) {
+  // ...
+}
+
+function MyComponent() {
+  const [state, dispatch] = useReducer(reducer, { age: 42 });
+  // ...
+  }
+```
+### 2.useMemo
+只有在count1发生变化的时候，useMemo函数的函数参数才会再次执行，否则缓存的结果不会变化；其实就是在每次重新渲染的时候能够缓存计算的结果
