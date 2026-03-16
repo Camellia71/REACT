@@ -10,4 +10,10 @@ export default defineConfig({
       include: ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
     }),
   ],
+  // 配置css模块化开发的规则，可以使用驼峰命名法
+  css: {
+    modules: {
+      localsConvention: "camelCase",
+    },
+  },
 });

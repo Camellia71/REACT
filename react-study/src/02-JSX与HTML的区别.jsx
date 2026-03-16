@@ -27,4 +27,5 @@ function App() {
     </Fragment>
   );
 }
+//JSX可以直接定义为变量，直接渲染到大括号当 => 可以做一些组件之间的传递
 export default App;
