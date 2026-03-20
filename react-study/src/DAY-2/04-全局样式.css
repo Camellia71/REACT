@@ -1,0 +1,6 @@
+.box {
+  width: 300px;
+  height: 300px;
+  color: blue;
+}
+/* 任何JSX文件都能使用这个css文件 */
