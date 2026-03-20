@@ -18,5 +18,5 @@ function App() {
   );
 }
 //在这里需要注意的是：布尔值，空字符串，null，undefined，对象，函数都不会被渲染
-//可以使用 JSON.stringify() {undefined + ''} 来查看这些值在JSX中是如何被处理的,也就是来让这些被渲染的值变成字符串，看看它们在JSX中是如何被处理的
+//可以使用 JSON.stringify() {undefined + ''} 来查看这些值在JSX中是如何被处理的,也就是来让这些被渲染的值变成字符串
 export default App;

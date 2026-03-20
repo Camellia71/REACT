@@ -29,3 +29,5 @@ function App() {
   );
 }
 export default App;
+
+//key属性，能够告诉react每个组件对应数组里的哪一项，可以帮助react判断发生了什么，从而正确更新dom树；其实就是跟踪列表每一项的身份

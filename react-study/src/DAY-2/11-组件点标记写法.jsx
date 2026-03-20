@@ -38,14 +38,14 @@ const Qf = () => {
 const Welcome = () => {
   return <div>Welcome</div>;
 };
-const { Welcome } = Qf;
+// const { Welcome } = Qf;
 function App() {
   return (
     <div>
       hello app
       <Welcome />
       <Qf />
-      <Qf.Welcome />
+      {/* <Qf.Welcome /> */}
       {/* 这种写法是错误的，因为Welcome不是Qf的属性，而是一个独立的函数组件 */}
     </div>
   );
