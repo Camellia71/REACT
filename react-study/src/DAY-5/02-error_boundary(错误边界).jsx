@@ -2,6 +2,7 @@
 // 我们可以将UI的一部分包裹到错误边界中，错误边界是一种特殊组件，可以显示一些后备UI而不是崩溃的部分，例如错误信息
 
 import className from "classnames";
+import ErrorBoundary from "react-error-boundary";
 function Head() {
     className();
     return <div>Hello, Head!</div>;
@@ -9,7 +10,9 @@ function Head() {
 function App() {
     return (
         <div>
-            <Head />
+            <ErrorBoundary fallback={<div>出错了</div>}>
+                <Head />
+            </ErrorBoundary>
         </div>
     )
 }
