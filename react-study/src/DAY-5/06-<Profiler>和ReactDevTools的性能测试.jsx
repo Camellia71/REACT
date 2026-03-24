@@ -8,10 +8,13 @@ function Head({count}) {
 }
 function  App() {
     const [count,setCount] =useState(0);
+    const onRender=(id,phase,actualDuration,baseDuration,element)=>{
+        console.log(id,phase,actualDuration,baseDuration,element);
+    }
     return(
         <div>
             <button onClick={() => setCount(count + 1)}>点击</button>
-            <Profiler id="Head">
+            <Profiler id="Head" onRender={onRender}>
                 <Head count={count} />
             </Profiler>
             {count}

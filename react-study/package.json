@@ -5,13 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "devssr":"node server",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@react-spring/web": "^10.0.3",
-    "@tailwindcss/vite": "^4.2.2",
     "ahooks": "^3.9.6",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.20",
@@ -21,7 +20,6 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-error-boundary": "^6.1.1",
-    "tailwindcss": "^4.2.2",
     "use-immer": "^0.11.0",
     "vite-plugin-eslint": "^1.8.1"
   },

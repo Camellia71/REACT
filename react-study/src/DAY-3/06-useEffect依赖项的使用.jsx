@@ -15,6 +15,7 @@ function App() {
         setCount(count+1)
         setMsg('hello useEffect')
     }
+    //props，计算变量和state都可以作为依赖项
     return (
         <div>
             hello App

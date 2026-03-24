@@ -1,0 +1,32 @@
+{
+  "name": "示例数据",
+  "version": "1.0.0",
+  "description": "这是一个示例JSON数据",
+  "items": [
+    {
+      "id": 1,
+      "title": "第一项",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "第二项",
+      "completed": true
+    },
+    {
+      "id": 3,
+      "title": "第三项",
+      "completed": false
+    }
+  ],
+  "metadata": {
+    "createdAt": "2024-01-01T00:00:00Z",
+    "author": "系统生成",
+    "tags": ["示例", "测试", "数据"]
+  },
+  "settings": {
+    "theme": "dark",
+    "language": "zh-CN",
+    "notifications": true
+  }
+}
